@@ -28,6 +28,10 @@ docker pull msllws/bt-lnmp:1.0
 ***2、运行容器***
 
 ```
+#与宿主机共用网络，不用做端口映射
+docker run -itd --name bt-lnmp --net=host --privileged=true -v /home/www:/www/wwwroot msllws/bt-lnmp:1.0 /usr/sbin/init
+
+#Win或Mac环境下不支持--net=host，需要做端口映射
 docker run -itd --name bt-lnmp -p 20:20 -p 21:21 -p 80:80  -p 443:443 -p 3306:3306 -p 8888:8888 --privileged=true -v /home/www:/www/wwwroot msllws/bt-lnmp:1.0 /usr/sbin/init
 ```
 
